@@ -1,0 +1,13 @@
+[Unit]
+Description=Terminal UI Application
+After=network.target ollama.service
+
+[Service]
+Type=simple
+Environment=NODE_ENV=production
+EnvironmentFile=/etc/terminal-ui.env
+ExecStart=/usr/bin/terminal-ui
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

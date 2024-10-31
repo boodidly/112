@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --backgroundColor: #1A1A1A;
+  --terminalBackground: #1E1E1E;
+  --glowColor: #40E0D0;
+  --glowIntensity: 0.5;
+  --borderColor: #2A2A2A;
+}
+
+body {
+  color: #D4D4D4;
+  background: var(--backgroundColor);
+}
+
+.terminal {
+  background-color: var(--terminalBackground);
+  box-shadow: 0 0 10px var(--glowColor);
+  border: 1px solid var(--glowColor);
+  opacity: var(--glowIntensity);
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+}
+
+.terminal:hover {
+  opacity: 1;
+  box-shadow: 0 0 20px var(--glowColor);
+}
+
+.terminal.dark-glow {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  border-color: #2A2A2A;
+  transition: all 1s ease-in-out;
+}
+
+.terminal.dark-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.terminal-content {
+  user-select: text;
+}
+
+.sidebar-button {
+  @apply w-full px-4 py-3 flex items-center gap-3 text-[#D4D4D4] hover:bg-[#2A2A2A] transition-all relative;
+  border-bottom: 1px solid var(--borderColor);
+}
+
+.sidebar-button::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--glowColor);
+  opacity: 0.15;
+  box-shadow: 
+    0 0 5px var(--glowColor),
+    0 0 10px var(--glowColor);
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar-button:hover::after,
+.sidebar-button:focus::after {
+  opacity: var(--glowIntensity);
+  box-shadow: 
+    0 0 5px var(--glowColor),
+    0 0 10px var(--glowColor),
+    0 0 15px var(--glowColor);
+}
+
+.sidebar-button:first-child {
+  @apply rounded-t-lg;
+}
+
+.sidebar-button:last-child {
+  @apply rounded-b-lg border-none;
+}
+
+.terminal-font {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+}
+
+.terminal-cursor {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.action-button {
+  @apply w-full bg-[#1A1A1A] hover:bg-[#2A2A2A] text-[#D4D4D4] relative transition-all;
+}
+
+.action-button::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--glowColor);
+  opacity: 0.15;
+  box-shadow: 
+    0 0 5px var(--glowColor),
+    0 0 10px var(--glowColor);
+  transition: all 0.3s ease-in-out;
+}
+
+.action-button:hover::after,
+.action-button:focus::after {
+  opacity: var(--glowIntensity);
+  box-shadow: 
+    0 0 5px var(--glowColor),
+    0 0 10px var(--glowColor),
+    0 0 15px var(--glowColor);
+}
